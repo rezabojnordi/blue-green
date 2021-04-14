@@ -7,7 +7,7 @@
  app_name: app
  version: v1.0.0
  private_net: my_network
- username: "rezabojnordi"
- password: "09368700813"
+ username: ""
+ password: ""
  nginx_name: internal_proxy
  

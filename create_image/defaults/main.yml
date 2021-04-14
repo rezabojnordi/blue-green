@@ -1,0 +1,7 @@
+---
+# defaults file for create_image
+path: /app/
+version: v1.0.0
+full_path: "{{ path }}{{ version }}/"
+source_path: "./"
+app_name: "app"

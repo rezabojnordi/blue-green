@@ -1,0 +1,27 @@
+---
+# tasks file for create_image
+
+- name: create directory in destination if not exist
+  file: path={{full_path}} state=directory
+
+- name: copy app file
+  ansible.builtin.copy:
+    src: {{ source_path }}
+    dest: {{ full_path }}
+
+
+
+- name: Creates image for app
+  command: chdir={{full_path}} docker build -t {{ app_name }}:{{version}} .
+
+
+- name: Docker push image to repository
+  shell: docker image push {{ app_name }}:{{version}}
+
+
+  
+
+
+
+
+  

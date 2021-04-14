@@ -1,0 +1,17 @@
+---
+# tasks file for install_nginx
+#
+
+- name: Creates directory for nginc config
+  file:
+    path: /home/ubuntu/nginx/
+    state: directory
+
+- name: Run nginx Container
+  shell: "docker container run -p 3000:80 -d --name nginx_proxy -v /home/ubuntu/nginx/:/etc/nginx/conf.d nginx:latest"
+  
+
+
+
+
+  

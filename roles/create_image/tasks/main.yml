@@ -1,0 +1,30 @@
+---
+# tasks file for create_image
+
+- name: create directory in destination if not exist
+  file: path={{full_path}} state=directory
+
+- name: copy app file
+  copy:
+    src: /home/reza/Documents/snap_project/apps/{{ version }}/
+    dest: "{{ full_path }}"
+
+
+
+- name: Creates image for app
+  shell: docker build -t {{ app_name }}:{{version}} {{ full_path }}
+
+- name: Docker push image to repository
+  shell: "{{item}}"
+  with_items:
+    - "docker logout"
+    - "docker login -u {{ username }} -p {{ password }}"
+    - "docker tag {{ app_name }}:{{version}} {{ username }}/{{ app_name }}:{{version}}"
+    - "docker image push {{ username }}/{{ app_name }}:{{version}}"
+
+
+
+
+
+
+

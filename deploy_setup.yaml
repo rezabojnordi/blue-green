@@ -1,0 +1,11 @@
+---
+
+- name:
+  hosts: run
+  tasks:
+    - name: deploy app
+      import_role:
+         name: blue-green
+  user: root
+
+

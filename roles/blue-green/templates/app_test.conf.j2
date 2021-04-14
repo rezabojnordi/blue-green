@@ -1,0 +1,10 @@
+upstream myapp2 {
+    server {{ app_name }}-{{ version }}:3000;
+    }
+    server {
+        listen 8080;
+
+        location / {
+            proxy_pass http://myapp2;
+        }
+    }

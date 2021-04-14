@@ -1,2 +1,3 @@
 ---
 # defaults file for install_docker
+private_net: my_network

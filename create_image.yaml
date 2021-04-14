@@ -1,0 +1,11 @@
+---
+
+- name:
+  hosts: run
+  tasks:
+    - name: Create image
+      import_role:
+         name: create_image
+  user: root
+
+

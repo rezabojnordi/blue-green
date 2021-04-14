@@ -1,0 +1,13 @@
+---
+# defaults file for blue-green
+
+ nginx_test_dis_config: /root/nginx/app_test.conf
+ nginx_dis_config: /root/nginx/app.conf
+ naginx_name: internal_proxy
+ app_name: app
+ version: v1.0.0
+ private_net: my_network
+ username: "rezabojnordi"
+ password: "09368700813"
+ nginx_name: internal_proxy
+ 

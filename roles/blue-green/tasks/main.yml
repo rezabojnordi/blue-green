@@ -1,0 +1,45 @@
+---
+# tasks file for blue-green
+- name: Download app app image
+  shell: docker run -d --net={{ private_net }} --name {{ app_name }}-{{ version }} {{ username }}/{{ app_name }}:{{ version }} 
+
+
+- name: Config nginx for test new app
+  template: 
+    src: app_test.conf.j2
+    dest: "{{ nginx_test_dis_config }}"
+  
+- name: reload nginx for accept new config 
+  shell: docker exec {{ naginx_name }} nginx -s reload
+
+- name: Register container ip
+  shell: "docker inspect --format '{''{ .NetworkSettings.Networks.{{ private_net }}.IPAddress }''}'  {{ nginx_name }}"
+  register: nginx_ip
+
+- name: debug
+  debug:
+    msg: "{{ nginx_ip.stdout }}"
+
+- name: debug url
+  debug:
+    msg: "http://{{ nginx_ip.stdout }}/healthz"
+
+- name: Check new app healthz path
+  uri:
+    url: "http://{{ nginx_ip.stdout }}/healthz"
+    follow_redirects: none
+    method: GET
+  register: _result
+  until: _result.status == 200
+  retries: 10 
+  delay: 5 
+
+- name: Change nginx config for new app
+  template: 
+    src: app.conf.j2
+    dest: "{{ nginx_dis_config }}"
+
+- name: reload nginx for if all container is healthz ok 
+  shell: docker exec {{ naginx_name }} nginx -s reload
+
+

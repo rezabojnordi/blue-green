@@ -1,7 +1,10 @@
 ---
 # defaults file for create_image
-path: /app/
-version: v1.0.0
+path: "/root/"
+version: "v1.0.0"
+source_path: "/apps/{{version}}/"
 full_path: "{{ path }}{{ version }}/"
 source_path: "./"
 app_name: "app"
+username: ""
+password: "app"

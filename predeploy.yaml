@@ -1,0 +1,11 @@
+---
+
+- name:
+  hosts: run
+  tasks:
+    - name: deploy code
+      import_role: 
+         name: install_docker
+  user: root
+        
+

@@ -2,9 +2,11 @@
 # defaults file for create_image
 path: "/root/"
 version: "v1.0.0"
-source_path: "/apps/{{version}}/"
+source_path: "/home/reza/Documents/snap_project/apps/{{version}}/"
 full_path: "{{ path }}{{ version }}/"
 source_path: "./"
 app_name: "app"
-username: ""
-password: "app"
+username: "rezabojnordi"
+password: "09368700813"
+private_net: my_network
+nginx_name: internal_proxy

@@ -2,13 +2,23 @@
 # tasks file for install_nginx
 #
 
+
+- name: Create private network
+  shell: "docker network create --subnet=172.21.0.0/16 {{ private_net }} "
+
+
 - name: Creates directory for nginc config
   file:
     path: /home/ubuntu/nginx/
     state: directory
 
+- name: Change nginx config for new app
+  template: 
+    src: app.conf.j2
+    dest: "{{ nginx_dis_config }}"
+
 - name: Run nginx Container
-  shell: "docker container run -p 3000:80 -d --name nginx_proxy -v /home/ubuntu/nginx/:/etc/nginx/conf.d nginx:latest"
+  shell: "docker container run -p 3000:80 -d --name {{ nginx_name }} --net={{ private_net }} -v /root/nginx/:/etc/nginx/conf.d nginx:latest"
   
 
 

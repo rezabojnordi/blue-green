@@ -6,7 +6,7 @@
 
 - name: copy app file
   copy:
-    src: /home/reza/Documents/snap_project/apps/{{ version }}/  
+    src: /home/reza/Documents/snap_project/apps/{{ version }}/
     dest: "{{ full_path }}"
 
 
@@ -23,9 +23,8 @@
     - "docker image push {{ username }}/{{ app_name }}:{{version}}"
 
 
-  
 
 
 
 
-  
+

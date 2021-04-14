@@ -1,2 +1,8 @@
 ---
 # defaults file for install_nginx
+private_net: my_network
+nginx_name: internal_proxy
+naginx_name: internal_proxy
+app_name: app
+version: v1.0.0
+nginx_dis_config: /root/nginx/app.conf

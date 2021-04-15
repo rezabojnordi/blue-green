@@ -1,7 +1,7 @@
 # blue-green
 
 
-### blue-green implement for change version
+### blue-green implement for version change 
 
 #### step1:
 you must configure inventory files for ansible playbooks

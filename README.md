@@ -3,6 +3,9 @@
 
 ### blue-green implement for change version
 
+Initially, it was assumed that the first version of the software was running. To change the version, the image is downloaded and the container is uploaded, then we check the health of the new version with a proxy. If all things good, restart the proxy to revert to the new container.
+
+
 #### step1:
 you must configure inventory files for ansible playbooks
 #### step2:

@@ -6,6 +6,7 @@
     - name: deploy code
       import_role:
          name: install_docker
+      tags: always
     - name: run proxy
       import_role:
          name: config_nginx
